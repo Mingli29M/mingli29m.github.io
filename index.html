@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My GitHub Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- Navbar -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-600">My GitHub Site</h1>
+      <nav class="space-x-6">
+        <a href="#about" class="hover:text-indigo-600">About</a>
+        <a href="#projects" class="hover:text-indigo-600">Projects</a>
+        <a href="#contact" class="hover:text-indigo-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to My Website</h2>
+    <p class="text-lg mb-6">A simple and modern page hosted on GitHub Pages</p>
+    <a href="#projects" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-semibold shadow hover:bg-gray-100">View My Work</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="max-w-5xl mx-auto px-4 py-16">
+    <h3 class="text-3xl font-bold mb-6 text-center">About Me</h3>
+    <p class="text-lg text-gray-600 leading-relaxed text-center">
+      Hi! I’m building this site to showcase my projects and ideas. This page is powered by GitHub Pages and styled with TailwindCSS.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="bg-gray-100 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl font-bold mb-10 text-center">Projects</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Project One -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition cursor-pointer" onclick="openModal('modal1')">
+          <h4 class="text-xl font-semibold mb-2">Project One</h4>
+          <p class="text-gray-600">Click to see more details about this project.</p>
+        </div>
+
+        <!-- Project Two -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition cursor-pointer" onclick="openModal('modal2')">
+          <h4 class="text-xl font-semibold mb-2">Project Two</h4>
+          <p class="text-gray-600">Click to see more details about this project.</p>
+        </div>
+
+        <!-- Project Three -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition cursor-pointer" onclick="openModal('modal3')">
+          <h4 class="text-xl font-semibold mb-2">Project Three</h4>
+          <p class="text-gray-600">Click to see more details about this project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals -->
+  <div id="modal1" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-2xl shadow max-w-lg w-full relative">
+      <button onclick="closeModal('modal1')" class="absolute top-3 right-3 text-gray-500 hover:text-black">✖</button>
+      <h4 class="text-2xl font-bold mb-4">Project One</h4>
+      <p class="text-gray-700">This is a more detailed description of Project One. You can explain its purpose, features, or technologies used here.</p>
+    </div>
+  </div>
+
+  <div id="modal2" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-2xl shadow max-w-lg w-full relative">
+      <button onclick="closeModal('modal2')" class="absolute top-3 right-3 text-gray-500 hover:text-black">✖</button>
+      <h4 class="text-2xl font-bold mb-4">Project Two</h4>
+      <p class="text-gray-700">This is a more detailed description of Project Two. Add screenshots, features, or links here.</p>
+    </div>
+  </div>
+
+  <div id="modal3" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-2xl shadow max-w-lg w-full relative">
+      <button onclick="closeModal('modal3')" class="absolute top-3 right-3 text-gray-500 hover:text-black">✖</button>
+      <h4 class="text-2xl font-bold mb-4">Project Three</h4>
+      <p class="text-gray-700">This is a more detailed description of Project Three. You can include background info or links to the repo.</p>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-5xl mx-auto px-4 py-16 text-center">
+    <h3 class="text-3xl font-bold mb-6">Contact Me</h3>
+    <p class="text-gray-600 mb-4">Feel free to reach out if you’d like to connect!</p>
+    <a href="mailto:your.email@example.com" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-indigo-700">Send Email</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 py-6 text-center">
+    <p>&copy; <span id="year"></span> My GitHub Site. Built with ❤️ using GitHub Pages.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove("hidden");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add("hidden");
+    }
+  </script>
+</body>
+</html>
