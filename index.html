@@ -27,7 +27,7 @@
       display: grid;
       place-items: center;
       padding: 24px;
-      font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: radial-gradient(circle at 15% 10%, #d7e8ff 0%, transparent 45%),
                   radial-gradient(circle at 85% 85%, #f5dfff 0%, transparent 40%),
                   var(--bg);
@@ -148,7 +148,7 @@
   <section class="counter-section" aria-labelledby="counterTitle">
     <p class="eyebrow">Temporary Public Page</p>
     <h1 id="counterTitle">Web Print Counter</h1>
-    <p class="lead">This site is currently focused on one thing: tracking the public print count in a clean, modern single section.</p>
+    <p class="lead">This site is currently focused on one thing: tracking a visitor-updated website print count in a clean, modern single section.</p>
 
     <p id="counterValue" class="count" aria-live="polite">0</p>
     <p class="label">Total Prints</p>
@@ -168,13 +168,13 @@
     const incrementBtn = document.getElementById('incrementBtn');
     const resetBtn = document.getElementById('resetBtn');
 
-    const parseSavedCount = () => {
+    const loadCounterValue = () => {
       const raw = localStorage.getItem(STORAGE_KEY);
-      const parsed = Number.parseInt(raw ?? '', 10);
-      return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
+      return Math.max(0, Number.parseInt(raw, 10) || 0);
     };
 
-    let count = parseSavedCount();
+    let count = loadCounterValue();
+    let feedbackTimer;
 
     const render = () => {
       counterValue.textContent = count.toLocaleString();
@@ -184,18 +184,26 @@
       localStorage.setItem(STORAGE_KEY, String(count));
     };
 
+    const showFeedback = (message) => {
+      statusText.textContent = message;
+      window.clearTimeout(feedbackTimer);
+      feedbackTimer = window.setTimeout(() => {
+        statusText.textContent = '';
+      }, 3000);
+    };
+
     incrementBtn.addEventListener('click', () => {
       count += 1;
       persist();
       render();
-      statusText.textContent = 'Counter updated.';
+      showFeedback('Counter updated.');
     });
 
     resetBtn.addEventListener('click', () => {
       count = 0;
       persist();
       render();
-      statusText.textContent = 'Counter reset to zero.';
+      showFeedback('Counter reset to zero.');
     });
 
     render();
