@@ -3,352 +3,210 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mingli29 - Developer & Creator</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            dark: {
-              bg: '#0f172a',
-              card: '#1e293b',
-              border: '#334155',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <title>Print Counter — Mingli29</title>
   <style>
-    .theme-transition {
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    :root {
+      color-scheme: light;
+      --bg: #f5f5f7;
+      --panel: rgba(255, 255, 255, 0.72);
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0, 0, 0, 0.08);
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at 15% 10%, #d7e8ff 0%, transparent 45%),
+                  radial-gradient(circle at 85% 85%, #f5dfff 0%, transparent 40%),
+                  var(--bg);
+      color: var(--text);
+    }
+
+    .counter-section {
+      width: min(960px, 100%);
+      padding: clamp(2rem, 4vw, 4rem);
+      border-radius: 36px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 0.8rem 0 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 650;
+    }
+
+    .lead {
+      margin: 1rem auto 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.55;
+    }
+
+    .count {
+      margin: clamp(1.8rem, 4vw, 2.7rem) 0 0;
+      font-size: clamp(2.8rem, 11vw, 6.7rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .label {
+      margin: 0.6rem 0 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .actions {
+      margin-top: clamp(1.6rem, 3vw, 2rem);
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.9rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(0, 113, 227, 0.35);
+    }
+
+    .primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .secondary {
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .secondary:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .status {
+      min-height: 1.3rem;
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 640px) {
+      .counter-section {
+        border-radius: 26px;
+      }
     }
   </style>
 </head>
-<body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-gray-100 font-sans theme-transition">
+<body>
+  <section class="counter-section" aria-labelledby="counterTitle">
+    <p class="eyebrow">Temporary Public Page</p>
+    <h1 id="counterTitle">Web Print Counter</h1>
+    <p class="lead">This site is currently focused on one thing: tracking a visitor-updated website print count in a clean, modern single section.</p>
 
-  <!-- Navbar -->
-  <header class="bg-white dark:bg-dark-card shadow sticky top-0 z-50 theme-transition">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">Mingli29</h1>
-      <nav class="flex items-center space-x-6">
-        <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
-        <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400">Projects</a>
-        <a href="#studio" class="hover:text-indigo-600 dark:hover:text-indigo-400">Studio</a>
-        <a href="#accounts" class="hover:text-indigo-600 dark:hover:text-indigo-400">Accounts</a>
-        <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
-        <button id="themeToggle" class="ml-4 p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-          <svg id="sunIcon" class="w-5 h-5 text-yellow-500 hidden" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
-          </svg>
-          <svg id="moonIcon" class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-          </svg>
-        </button>
-      </nav>
+    <p id="counterValue" class="count" aria-live="polite">0</p>
+    <p class="label">Total Prints</p>
+
+    <div class="actions">
+      <button id="incrementBtn" class="primary" type="button">Add Print</button>
+      <button id="resetBtn" class="secondary" type="button">Reset</button>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="text-center py-20 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-800 dark:to-purple-800 text-white theme-transition">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to My Portfolio</h2>
-    <p class="text-lg mb-6">Developer, Modder & Creator - Showcasing my projects and creative work</p>
-    <a href="#projects" class="bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 px-6 py-3 rounded-full font-semibold shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition">View My Work</a>
+    <p id="statusText" class="status" role="status"></p>
   </section>
-
-  <!-- About Section -->
-  <section id="about" class="max-w-5xl mx-auto px-4 py-16">
-    <h3 class="text-3xl font-bold mb-6 text-center">About Me</h3>
-    <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-center">
-      Hi! I'm <strong>Mingli29</strong>, a developer and creator passionate about game development, modding, and open-source software. I create Minecraft mods like <strong>BTDM</strong> and build creative tools like <strong>PixelStudio</strong>. I collaborate with friends on exciting projects and share my work with the community.
-    </p>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="bg-gray-100 dark:bg-gray-900 py-16 theme-transition">
-    <div class="max-w-6xl mx-auto px-4">
-      <h3 class="text-3xl font-bold mb-10 text-center">Featured Projects</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Project One: BTDM -->
-        <div class="bg-white dark:bg-dark-card p-6 rounded-2xl shadow hover:shadow-lg transition cursor-pointer theme-transition" onclick="openModal('modal1')">
-          <img src="btdm.png" alt="BTDM Mod Icon" class="rounded-xl mb-4 w-full h-40 object-cover">
-          <h4 class="text-xl font-semibold mb-2">BTDM</h4>
-          <p class="text-gray-600 dark:text-gray-400">Minecraft mod with exciting new features and gameplay enhancements.</p>
-          <span class="inline-block mt-3 text-sm text-indigo-600 dark:text-indigo-400 font-semibold">Minecraft Mod →</span>
-        </div>
-        
-        <!-- Project Two: PixelStudio -->
-        <div class="bg-white dark:bg-dark-card p-6 rounded-2xl shadow hover:shadow-lg transition cursor-pointer theme-transition" onclick="openModal('modal2')">
-          <div class="rounded-xl mb-4 w-full h-40 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">PixelStudio</h4>
-          <p class="text-gray-600 dark:text-gray-400">Open-source pixel art application built with Godot 4.x - An Aseprite alternative.</p>
-          <span class="inline-block mt-3 text-sm text-indigo-600 dark:text-indigo-400 font-semibold">Godot Application →</span>
-        </div>
-        
-        <!-- Project Three -->
-        <div class="bg-white dark:bg-dark-card p-6 rounded-2xl shadow hover:shadow-lg transition cursor-pointer theme-transition" onclick="openModal('modal3')">
-          <div class="rounded-xl mb-4 w-full h-40 bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-            </svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Coming Soon</h4>
-          <p class="text-gray-600 dark:text-gray-400">More exciting projects are in development. Stay tuned!</p>
-          <span class="inline-block mt-3 text-sm text-gray-500 dark:text-gray-500 font-semibold">In Development →</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Studio Section -->
-  <section id="studio" class="bg-white dark:bg-dark-bg py-16 theme-transition">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h3 class="text-3xl font-bold mb-6">Our Studio</h3>
-      <p class="text-gray-600 dark:text-gray-300 mb-8">
-        A creative space I share with my friends, where we collaborate on mods and projects together.
-      </p>
-      <div class="flex justify-center">
-        <img src="logo Rectangle.png" alt="Studio Logo" class="rounded-xl shadow-lg w-64">
-      </div>
-    </div>
-  </section>
-
-  <!-- Accounts / Panels Section -->
-  <section id="accounts" class="py-16 bg-gray-100 dark:bg-gray-900 theme-transition">
-    <div class="max-w-6xl mx-auto px-4">
-      <h3 class="text-3xl font-bold mb-8 text-center">My Online Presence</h3>
-      <div class="grid gap-8 md:grid-cols-2">
-
-        <!-- Bilibili Card -->
-        <div class="bg-white dark:bg-dark-card rounded-2xl shadow transition hover:shadow-lg overflow-hidden theme-transition">
-          <button onclick="toggleExpand('card-bilibili')" class="w-full text-left p-6 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-              <img src="https://i.imgur.com/ZGkznD8.png" alt="Bilibili" class="w-12 h-12 rounded-lg">
-              <div>
-                <h4 class="text-xl font-semibold">Bilibili</h4>
-                <p class="text-gray-600 dark:text-gray-400">Watch my videos</p>
-              </div>
-            </div>
-            <span id="icon-bilibili" class="text-2xl">+</span>
-          </button>
-          <div id="card-bilibili" class="hidden px-6 pb-6">
-            <div class="space-y-6">
-              <div class="aspect-w-16 aspect-h-9">
-                <iframe src="https://player.bilibili.com/player.html?bvid=BV1smc3eeEyb" frameborder="0" allowfullscreen class="w-full h-full rounded-lg"></iframe>
-              </div>
-              <div class="aspect-w-16 aspect-h-9">
-                <iframe src="https://player.bilibili.com/player.html?bvid=BV1nvM1zvEfu" frameborder="0" allowfullscreen class="w-full h-full rounded-lg"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modrinth Card -->
-        <div class="bg-white dark:bg-dark-card rounded-2xl shadow transition hover:shadow-lg overflow-hidden theme-transition">
-          <button onclick="toggleExpand('card-modrinth')" class="w-full text-left p-6 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-              <img src="https://cdn.modrinth.com/assets/logos/logo.svg" alt="Modrinth" class="w-12 h-12">
-              <div>
-                <h4 class="text-xl font-semibold">Modrinth</h4>
-                <p class="text-gray-600 dark:text-gray-400">My modding work</p>
-              </div>
-            </div>
-            <span id="icon-modrinth" class="text-2xl">+</span>
-          </button>
-          <div id="card-modrinth" class="hidden px-6 pb-6">
-            <div class="space-y-4">
-              <img src="btdm.png" alt="BTDM Mod Image" class="rounded-lg w-full object-cover">
-              <h5 class="text-lg font-semibold">BTDM (Minecraft Mod)</h5>
-              <p class="text-gray-700 dark:text-gray-300">My most featured mod on Modrinth. Click below to view it.</p>
-              <a href="https://modrinth.com/mod/btdm" target="_blank" class="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">View on Modrinth →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Afdian (爱发电) Card -->
-        <div class="bg-white dark:bg-dark-card rounded-2xl shadow transition hover:shadow-lg overflow-hidden theme-transition">
-          <button onclick="toggleExpand('card-afdian')" class="w-full text-left p-6 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-              <img src="https://afdian.net/favicon.ico" alt="Afdian" class="w-12 h-12">
-              <div>
-                <h4 class="text-xl font-semibold">爱发电</h4>
-                <p class="text-gray-600 dark:text-gray-400">Support me</p>
-              </div>
-            </div>
-            <span id="icon-afdian" class="text-2xl">+</span>
-          </button>
-          <div id="card-afdian" class="hidden px-6 pb-6">
-            <p class="text-gray-700 dark:text-gray-300 mb-4">If you like my work, you can support me via 爱发电 (Afdian):</p>
-            <a href="https://afdian.net/a/mingli29" target="_blank" class="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">Go to Afdian →</a>
-          </div>
-        </div>
-
-        <!-- GitHub Card -->
-        <div class="bg-white dark:bg-dark-card rounded-2xl shadow transition hover:shadow-lg overflow-hidden theme-transition">
-          <button onclick="toggleExpand('card-github')" class="w-full text-left p-6 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="w-12 h-12 rounded-full dark:invert">
-              <div>
-                <h4 class="text-xl font-semibold">GitHub</h4>
-                <p class="text-gray-600 dark:text-gray-400">My source & repos</p>
-              </div>
-            </div>
-            <span id="icon-github" class="text-2xl">+</span>
-          </button>
-          <div id="card-github" class="hidden px-6 pb-6">
-            <p class="text-gray-700 dark:text-gray-300 mb-4">Check out my repositories and projects:</p>
-            <ul class="space-y-3">
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                </svg>
-                <a href="https://github.com/Mingli29M" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">My GitHub Profile →</a>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                  <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
-                </svg>
-                <a href="https://github.com/Mingli29M/PixelStudio" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">PixelStudio Repository →</a>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                </svg>
-                <a href="https://github.com/Mingli29M/mingli29m.github.io" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline">This Website's Source →</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Modals for Projects -->
-  <div id="modal1" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-    <div class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-2xl max-w-lg w-full relative theme-transition">
-      <button onclick="closeModal('modal1')" class="absolute top-3 right-3 text-gray-500 hover:text-black dark:hover:text-white text-2xl">✖</button>
-      <h4 class="text-2xl font-bold mb-4">BTDM (Minecraft Mod)</h4>
-      <img src="btdm.png" alt="BTDM Screenshot" class="rounded-xl mb-4 w-full object-cover">
-      <p class="text-gray-700 dark:text-gray-300 mb-4">BTDM is a Minecraft mod hosted on Modrinth. It introduces exciting new features and gameplay enhancements. Check it out on Modrinth below!</p>
-      <a href="https://modrinth.com/mod/btdm" target="_blank" class="bg-indigo-600 dark:bg-indigo-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-indigo-700 dark:hover:bg-indigo-600 inline-block">View on Modrinth</a>
-    </div>
-  </div>
-  
-  <div id="modal2" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-    <div class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-2xl max-w-lg w-full relative theme-transition">
-      <button onclick="closeModal('modal2')" class="absolute top-3 right-3 text-gray-500 hover:text-black dark:hover:text-white text-2xl">✖</button>
-      <h4 class="text-2xl font-bold mb-4">PixelStudio</h4>
-      <div class="rounded-xl mb-4 w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-        <svg class="w-24 h-24 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-        </svg>
-      </div>
-      <p class="text-gray-700 dark:text-gray-300 mb-4">PixelStudio is a full-featured, open-source pixel art application built with Godot 4.x. Designed as an alternative to Aseprite, it includes drawing tools, layer management, animation timeline, color palettes, and more!</p>
-      <div class="mb-4">
-        <h5 class="font-semibold mb-2">Key Features:</h5>
-        <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-          <li>Complete drawing tool suite</li>
-          <li>Layer system with blend modes</li>
-          <li>Frame-by-frame animation</li>
-          <li>Custom color palettes</li>
-          <li>Export to PNG, GIF, sprite sheets</li>
-        </ul>
-      </div>
-      <div class="flex gap-3">
-        <a href="https://github.com/Mingli29M/PixelStudio" target="_blank" class="bg-gray-800 dark:bg-gray-700 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-gray-700 dark:hover:bg-gray-600 inline-block">GitHub Repo</a>
-        <a href="https://mingli29m.github.io/PixelStudio/" target="_blank" class="bg-indigo-600 dark:bg-indigo-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-indigo-700 dark:hover:bg-indigo-600 inline-block">Documentation</a>
-      </div>
-    </div>
-  </div>
-  
-  <div id="modal3" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-    <div class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-2xl max-w-lg w-full relative theme-transition">
-      <button onclick="closeModal('modal3')" class="absolute top-3 right-3 text-gray-500 hover:text-black dark:hover:text-white text-2xl">✖</button>
-      <h4 class="text-2xl font-bold mb-4">Coming Soon</h4>
-      <p class="text-gray-700 dark:text-gray-300">More exciting projects are in development. Stay tuned for updates!</p>
-    </div>
-  </div>
-
-  <!-- Contact Section -->
-  <section id="contact" class="max-w-5xl mx-auto px-4 py-16 text-center">
-    <h3 class="text-3xl font-bold mb-6">Get In Touch</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-4">Feel free to reach out if you'd like to connect or collaborate!</p>
-    <a href="mailto:your.email@example.com" class="bg-indigo-600 dark:bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-indigo-700 dark:hover:bg-indigo-600 inline-block">Send Email</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 dark:bg-gray-950 text-gray-300 py-6 text-center theme-transition">
-    <p>&copy; <span id="year"></span> Mingli29. Built with ❤️ using GitHub Pages.</p>
-  </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const STORAGE_KEY = 'mingli_print_counter';
+    const counterValue = document.getElementById('counterValue');
+    const statusText = document.getElementById('statusText');
+    const incrementBtn = document.getElementById('incrementBtn');
+    const resetBtn = document.getElementById('resetBtn');
 
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    const sunIcon = document.getElementById('sunIcon');
-    const moonIcon = document.getElementById('moonIcon');
+    const loadCounterValue = () => {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return Math.max(0, Number.parseInt(raw, 10) || 0);
+    };
 
-    // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    if (currentTheme === 'dark') {
-      html.classList.add('dark');
-      sunIcon.classList.remove('hidden');
-      moonIcon.classList.add('hidden');
-    }
+    let count = loadCounterValue();
+    let feedbackTimer;
 
-    themeToggle.addEventListener('click', function() {
-      html.classList.toggle('dark');
-      
-      if (html.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-      } else {
-        localStorage.setItem('theme', 'light');
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-      }
+    const render = () => {
+      counterValue.textContent = count.toLocaleString();
+    };
+
+    const persist = () => {
+      localStorage.setItem(STORAGE_KEY, String(count));
+    };
+
+    const showFeedback = (message) => {
+      statusText.textContent = message;
+      window.clearTimeout(feedbackTimer);
+      feedbackTimer = window.setTimeout(() => {
+        statusText.textContent = '';
+      }, 3000);
+    };
+
+    incrementBtn.addEventListener('click', () => {
+      count += 1;
+      persist();
+      render();
+      showFeedback('Counter updated.');
     });
 
-    function toggleExpand(cardId) {
-      const card = document.getElementById(cardId);
-      const icon = document.getElementById("icon-" + cardId.split("-")[1]);
-      if (card.classList.contains("hidden")) {
-        card.classList.remove("hidden");
-        icon.textContent = "−";
-      } else {
-        card.classList.add("hidden");
-        icon.textContent = "+";
-      }
-    }
-
-    function openModal(id) {
-      document.getElementById(id).classList.remove("hidden");
-    }
-    
-    function closeModal(id) {
-      document.getElementById(id).classList.add("hidden");
-    }
-    
-    // Close modals when clicking outside
-    document.querySelectorAll('[id^="modal"]').forEach(modal => {
-      modal.addEventListener('click', function(e) {
-        if (e.target === this) {
-          closeModal(this.id);
-        }
-      });
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      persist();
+      render();
+      showFeedback('Counter reset to zero.');
     });
+
+    render();
   </script>
-
 </body>
 </html>
